@@ -8,13 +8,13 @@
   "plugins": [
     "prettier",
     "@typescript-eslint"
-  ],
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true
-      }
-    ]
-  }
+  ]
+  // "rules": {
+  //   "prettier/prettier": [
+  //     "error",
+  //     {
+  //       "singleQuote": true
+  //     }
+  //   ]
+  // }
 }
