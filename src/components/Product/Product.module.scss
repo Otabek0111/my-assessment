@@ -3,6 +3,10 @@
 @use '/src/styles/variables.scss';
 @use '/src/styles/functions.scss';
 
+*{
+  font-family: 'Cormorant Garamond', sans-serif;
+
+}
 .product {
   margin: 0 0 25px;
   width: 100%;
@@ -65,6 +69,8 @@
 
 .image {
   width: 100%;
+  cursor: pointer;
+  
 
   .inProductLanding & {
     margin-bottom: 10px;
@@ -151,5 +157,180 @@
     @include breakpoints.large {
       opacity: 0;
     }
+  }
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  // justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  max-width: 100%;
+}
+
+.modalContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Two equal columns
+  gap: 20px;
+  align-items: center; // Vertically center the content
+}
+
+/* Modal container */
+.modal {
+  display: grid;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background-color: white;
+  z-index: 1000;
+  overflow: auto;
+  padding: 20px;
+  box-shadow: 0 0 1000px 50px rgb(49, 48, 48);
+  @include breakpoints.small-only {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+ 
+.detailsContainer {
+  display: grid;
+  flex-direction: column;
+  grid-column: 2;
+  max-width: 70%;
+  max-height: 85%;
+  padding: 30px;
+
+  @include breakpoints.small-only {
+    // Modern browsers see a more optimal crop on mobile
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    object-fit: cover;
+    max-width: 100%;
+    // width: 100%;
+    display: block;
+  }
+
+  @include breakpoints.medium {
+    // padding: 0;
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    object-fit: cover;
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
+}
+.productTitle{
+  font-size: 34px; // Adjust the size as needed
+  letter-spacing: 1px; // Adjust the spacing as needed
+  font-weight: lighter;
+}
+.descriptionTitle {
+  padding-top: 20px;
+  font-size: small;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.descriptionText {
+  margin-bottom: 20px;
+  font-size: medium;
+}
+
+.imageContainer {
+  display: grid;
+  grid-column: 1; // Position the image in the first row
+  flex-direction: column;
+  // justify-content: center;
+  padding: 0 20px 20px 0px;
+  max-width: 50%;
+  max-height: 50%;
+
+  @include breakpoints.small-only {
+    // Modern browsers see a more optimal crop on mobile
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    // object-fit: cover;
+    max-width: 100%;
+    // width: 100%;
+    // display: block;
+  }
+
+  @include breakpoints.medium {
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-medium);
+    // width: 100%;
+    // object-fit: cover;
+    // padding: 0;
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    // object-fit: cover;
+    // max-width: 100%;
+    // width: 100%;
+
+  }
+
+}
+
+.images {
+  // padding-bottom: 500px;
+  // padding-top: 20px;
+  max-width: 100%;
+  // max-height: auto;
+
+  .inProductLanding & {
+    margin-bottom: 10px;
+  }
+
+  .featured & {
+    @include breakpoints.small-only {
+    //   // Modern browsers see a more optimal crop on mobile
+      // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+      object-fit: cover;
+      max-width: 100%;
+    }
+
+    // @include breakpoints.medium {
+    //   height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-medium);
+    //   object-fit: cover;
+    //   width: 100%;
+    // }
+  }
+
+  .inCart & {
+    flex-shrink: 0;
+    width: functions.getColumns(6, variables.$bp-small);
+
+    @include breakpoints.medium {
+      margin-bottom: 15px;
+      width: 100%;
+    }
+  }
+}
+
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: functions.getColumns(1, variables.$bp-small);
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+
+
+  @include breakpoints.medium {
+    top: 45px;
+    right: functions.getColumns(1, variables.$bp-medium);
+    width: 20px;
+    height: 20px;
+  }
+
+  @include breakpoints.large {
+    right: functions.getColumns(1, variables.$bp-large);
+    width: 30px;
+
+
   }
 }
