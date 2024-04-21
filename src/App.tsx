@@ -13,7 +13,9 @@ const App: React.FC = () => {
       <Router>
         <Routes>
           <Route path="/" element={<ProductLanding />} />
-          <Route path="/cart" element={<Cart />} />
+
+          {/* <Route path="/cart" element={<Cart />} /> */}
+          
         </Routes>
       </Router>
     </AppContext.Provider>
