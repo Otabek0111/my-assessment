@@ -1,0 +1,48 @@
+.navbar-container {
+  text-align: center;
+  font-family: 'Cormorant Garamond', sans-serif;
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    .navbar__link {
+      padding: 2.5rem 0.7rem;
+      cursor: pointer;
+      // font-weight: bold;
+      color: #333;
+      text-decoration: none;
+      font-size: larger;
+      position: relative; // Position relative to allow absolute positioning of pseudo-elements
+
+      // Add a black line under the "Featured" item
+      &--active::after {
+        content: '';
+        position: absolute;
+        bottom: 35px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        width: 75%;
+        background-color: black;
+        margin: auto;
+
+      }
+
+      // Add a black line under the item on hover
+      &:hover::after {
+        content: '';
+        position: absolute;
+        bottom: 35px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        width: auto;
+        background-color: black;
+
+      }
+    }
+  }
+}

@@ -19,6 +19,7 @@ const CartButton: React.FC<Props> = ({ className = '', cartQuantity }) => {
   );
 
   return (
+    
     <Link to="/cart" className={buttonClasses}>
       <span className={styles.icon}>
         <img src={bag} alt="shopping bag" />

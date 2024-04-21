@@ -1,0 +1,27 @@
+@use '/src/styles/colors.scss';
+
+.seachIcon{
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: colors.$color-white;
+    transition: background-color 300ms ease-in-out;
+  
+  }
+  
+  .searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 40px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: colors.$color-white;
+    transition: background-color 300ms ease-in-out;
+  
+    &:hover {
+      // background-color: colors.$color-gray;
+    }
+  }
