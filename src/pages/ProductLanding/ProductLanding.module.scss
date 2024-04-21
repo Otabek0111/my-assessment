@@ -1,6 +1,7 @@
 @use '/src/styles/breakpoints.scss';
 @use '/src/styles/variables.scss';
 @use '/src/styles/functions.scss';
+@use '/src/styles/colors.scss';
 
 .wrapper {
   padding: 35px 30px;
@@ -38,4 +39,16 @@
   @include breakpoints.medium {
     // margin: 0 0 45px;
   }
+}
+
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  position: absolute; 
+  top: 0; 
+  right: 0;
+  padding: 1rem; 
+
 }

@@ -1,6 +1,8 @@
 import CartButton from '../../components/CartButton';
 import ProductList from '../../components/ProductList';
 
+import SearchButton from '../../components/SearchButton'; // Import the SearchButton component
+
 import logo from '../../assets/logo.svg';
 
 import styles from './ProductLanding.module.scss';
@@ -18,29 +20,19 @@ function ProductLanding() {
 
   return (
     <main className={styles.wrapper}>
-      <CartButton
-        cartQuantity={cartQuantity}
-        className={styles.cartIconWrapper}
-      />
+
+    <div className={styles.productLanding}>
+        <div className={styles.actionButtons}>
+          <SearchButton />
+          <CartButton cartQuantity={cartQuantity} />
+        </div>
+    </div>
 
       <h1 className={styles.title}>
         <img src={logo} alt="Daily deals" />
       </h1>
      
       <Navbar />
-
-     
-      {/* <div className="navbar-container">
-      <nav className="navbar">
-        <div className="navbar__link">Featured</div>
-        <div className="navbar__link">Jeans</div>
-        <div className="navbar__link">Pants</div>
-        <div className="navbar__link">Shorts</div>
-        <div className="navbar__link">Tops</div>
-        <div className="navbar__link">Outerwear</div>
-        <div className="navbar__link">Accessories</div>
-      </nav>
-    </div> */}
 
       <ProductList
         addItem={addItem}
