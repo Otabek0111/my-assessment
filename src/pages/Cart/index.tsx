@@ -10,7 +10,10 @@ import close from '../../assets/close.svg';
 import styles from './Cart.module.scss';
 import { ICart, useAppContext } from '../../hooks/useAppContext';
 
-const Cart: React.FC = () => {
+interface CartProps {
+  closeCart: () => void;
+}
+const Cart: React.FC<CartProps> = ({ closeCart }) => {
   const { cartItems, checkout, incrementItem, decrementItem } = useAppContext();
 
   const innerClasses = cx(styles.inner, {
@@ -20,9 +23,9 @@ const Cart: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={innerClasses}>
-        <Link to="/" className={styles.closeBtn}>
+      <button className={styles.closeBtn} onClick={closeCart}>
           <img src={close} alt="close" />
-        </Link>
+        </button>
 
         {Boolean(cartItems.length) ? (
           <>
