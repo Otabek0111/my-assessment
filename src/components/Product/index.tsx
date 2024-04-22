@@ -84,27 +84,44 @@ const Product: React.FC<IProductProps> = ({
                         <p className={styles.descriptionTitle}>Description</p> 
                         <p className={styles.descriptionText}>{description}</p>
                           
-                        <p className={styles.descriptionTitle}>Size</p> 
 
-                        <SizeChart sizes={[1, 2, 3, 4]} />
 
+                          <div className={styles.sizeQuantity}>
+                          <div className={styles.sizeCol}>
+                          <p className={styles.descriptionTitle}>Size</p> 
+                          <SizeChart sizes={[1, 2, 3, 4]} />
+                          </div>
+
+                        <div className={styles.quantityBtn}>
+                        <div className={styles.sizeCol}>
+                        <p className={styles.descriptionTitleQuantity}>Quantity</p> 
+                          <Quantity
+                                  onIncrement={onIncrement}
+                                  onDecrement={onDecrement}
+                                  count={count} 
+                                />
+                          </div>
+
+                        </div>
+                        </div>
+                              
                         {isInCart ? (
-          <Quantity
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
-            count={count}
-          />
-        ) : (
-          onClick && (
-            <Button
-              className={styles.addButton}
-              disabled={isAdded}
-              onClick={onClick}
-            >
-              {isAdded ? 'Added' : 'Add to Bag'}
-            </Button>
-          )
-        )}
+                              <Quantity
+                                onIncrement={onIncrement}
+                                onDecrement={onDecrement}
+                                count={count}
+                              />
+                            ) : (
+                              onClick && (
+                                <Button
+                                  className={styles.addButton}
+                                  disabled={isAdded}
+                                  onClick={onClick}
+                                >
+                                  {isAdded ? 'Added' : 'Add to Bag'}
+                                </Button>
+                              )
+                            )}
         
                         {/* <Quantity
                           onIncrement={onIncrement}

@@ -230,10 +230,18 @@
   font-weight: lighter;
 }
 .descriptionTitle {
-  padding-top: 20px;
+  padding-top: 15px, 0px, 50px, 0px;
   font-size: small;
   font-weight: bold;
   margin-bottom: 5px;
+  text-transform: uppercase;
+  
+}
+.descriptionTitleQuantity{
+  font-size: small;
+  font-weight: bold;
+  padding-bottom: 14px;
+  margin: 0px;
   text-transform: uppercase;
 }
 
@@ -308,6 +316,39 @@
       width: 100%;
     }
   }
+}
+.sizeQuantity{
+  display: grid;
+  grid-column: 1; // Position the image in the first row
+  flex-direction: row;
+
+}
+.quantityBtn {
+  padding-left: 75px;
+  display: grid;
+  grid-column: 2;
+
+  width: 100%;
+  width: 40px; // Adjust size as needed
+  height: 40px; // Adjust size as needed
+  border-radius: 50%; // Makes the button circular
+
+  padding: 45px 0px 0px 150px; 
+
+
+  margin: 0 8px; // Adjust spacing between buttons as needed
+  font-size: 16px; // Adjust font size as needed
+  color: #000; // Adjust text color as needed
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.3s;
+
+}
+.sizeCol{
+  display: flex;
+  flex-direction: column;
 }
 
 
