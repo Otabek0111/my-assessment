@@ -44,6 +44,8 @@
   right: functions.getColumns(1, variables.$bp-small);
   width: 13px;
   height: 13px;
+  cursor: pointer;
+
 
   @include breakpoints.medium {
     top: 45px;
@@ -176,4 +178,17 @@
 
 .emptyText {
   @include typography.body;
+}
+
+.cartPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  width: 100%;
 }

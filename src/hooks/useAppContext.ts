@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import AppContext from '../contexts/AppContext';
 import { mockProducts } from '../mocks/dataMapper';
 import imageTypes from '@/constants/imageTypes';
+import Quantity from '@/components/Quantity';
 
 export interface IImage {
   type: imageTypes;
@@ -16,9 +17,12 @@ export interface IProduct {
   inventory: number;
   images: IImage[];
   description?: string;
+
 }
 export interface ICart extends IProduct {
   count: number;
+  quantity: number;
+  
 }
 
 export interface IAppContext {
@@ -71,6 +75,7 @@ export default function useAppContextValue(): IAppContext {
         price: product.price,
         images: product.images,
         inventory: product.inventory,
+        quantity: 1,
       });
     }
 

@@ -5,8 +5,8 @@ import styles from './Quantity.module.scss';
 
 interface Props {
   count: number;
-  onDecrement: () => void;
-  onIncrement: () => void;
+  onDecrement?: () => void;
+  onIncrement?: () => void;
 }
 
 const Quantity: React.FC<Props> = ({ onIncrement, onDecrement, count }) => {

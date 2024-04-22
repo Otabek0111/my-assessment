@@ -1,3 +1,8 @@
+@use '/src/styles/breakpoints.scss';
+@use '/src/styles/typography.scss';
+@use '/src/styles/variables.scss';
+@use '/src/styles/functions.scss';
+
 .navbar-container {
   text-align: center;
   font-family: 'Cormorant Garamond', sans-serif;
@@ -17,6 +22,10 @@
       font-size: larger;
       position: relative; // Position relative to allow absolute positioning of pseudo-elements
 
+      @include breakpoints.small-only {
+        padding: 0.5rem 0.7rem;
+      }
+
       // Add a black line under the "Featured" item
       &--active::after {
         content: '';
@@ -29,6 +38,9 @@
         background-color: black;
         margin: auto;
 
+        @include breakpoints.small-only {
+          bottom: 10px;
+        }
       }
 
       // Add a black line under the item on hover
@@ -42,7 +54,17 @@
         width: auto;
         background-color: black;
 
+        @include breakpoints.small-only {
+          bottom: 10px;
+          width: 80%;
+          align-items: center;
+          left: 10px;
+        }
       }
+    }
+    @include breakpoints.small-only {
+      display: flex;
+      flex-direction: column;
     }
   }
 }

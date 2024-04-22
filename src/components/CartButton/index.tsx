@@ -9,9 +9,9 @@ import styles from './CartButton.module.scss';
 export interface Props {
   cartQuantity: number;
   className?: string;
+  onClick: () => void;
 }
-
-const CartButton: React.FC<Props> = ({ className = '', cartQuantity }) => {
+const CartButton: React.FC<Props> = ({ className = '', cartQuantity, onClick }) => {
   const buttonClasses = cx(
     styles.button,
     { [styles.empty]: !cartQuantity },
@@ -19,15 +19,14 @@ const CartButton: React.FC<Props> = ({ className = '', cartQuantity }) => {
   );
 
   return (
-    
-    <Link to="/cart" className={buttonClasses}>
+    <button onClick={onClick} className={buttonClasses}>
       <span className={styles.icon}>
         <img src={bag} alt="shopping bag" />
       </span>
       {!!cartQuantity && (
         <span className={styles.quantity}>{cartQuantity}</span>
       )}
-    </Link>
+    </button>
   );
 };
 

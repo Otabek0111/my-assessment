@@ -3,6 +3,10 @@
 @use '/src/styles/variables.scss';
 @use '/src/styles/functions.scss';
 
+*{
+  font-family: 'Cormorant Garamond', sans-serif;
+
+}
 .product {
   margin: 0 0 25px;
   width: 100%;
@@ -65,6 +69,16 @@
 
 .image {
   width: 100%;
+  cursor: pointer;
+
+  @include breakpoints.small-only {
+    // Modern browsers see a more optimal crop on mobile
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    object-fit: cover;
+    width: 100%;
+
+  }
+  
 
   .inProductLanding & {
     margin-bottom: 10px;
@@ -88,6 +102,8 @@
     }
   }
 }
+
+
 
 .details {
   width: 100%;
@@ -151,5 +167,241 @@
     @include breakpoints.large {
       opacity: 0;
     }
+  }
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  // justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  max-width: 100%;
+}
+
+.modalContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Two equal columns
+  gap: 20px;
+  align-items: center; // Vertically center the content
+}
+
+/* Modal container */
+.modal {
+  display: grid;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background-color: white;
+  z-index: 1000;
+  overflow: auto;
+  padding: 20px;
+  box-shadow: 0 0 1000px 50px rgb(49, 48, 48);
+  @include breakpoints.small-only {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+ 
+.detailsContainer {
+  display: grid;
+  flex-direction: column;
+  grid-column: 2;
+  max-width: 70%;
+  max-height: 85%;
+  padding: 30px;
+
+  @include breakpoints.small-only {
+    // Modern browsers see a more optimal crop on mobile
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    object-fit: cover;
+    max-width: 100%;
+    // width: 100%;
+    display: block;
+  }
+
+  @include breakpoints.medium {
+    // padding: 0;
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    object-fit: cover;
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
+}
+.productTitle{
+  font-size: 34px; // Adjust the size as needed
+  letter-spacing: 1px; // Adjust the spacing as needed
+  font-weight: lighter;
+}
+.descriptionTitle {
+  padding-top: 15px, 0px, 50px, 0px;
+  font-size: small;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  
+}
+.descriptionTitleQuantity{
+  font-size: small;
+  font-weight: bold;
+  padding-bottom: 14px;
+  margin: 0px;
+  text-transform: uppercase;
+}
+
+.descriptionText {
+  margin-bottom: 20px;
+  font-size: medium;
+}
+
+.imageCol{
+  display: grid;
+  grid-column: 1; // Position the image in the first row
+  flex-direction: column;
+  // justify-content: center;
+  padding: 0 20px 20px 0px;
+  width: 35%;
+
+  // max-height: 100%;
+
+  @include breakpoints.small-only {
+    // Modern browsers see a more optimal crop on mobile
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    // object-fit: cover;
+    max-width: 100%;
+    width: 50%;
+    // display: block;
+  }
+
+  @include breakpoints.medium {
+    display: grid;
+    grid-column: 1; // Position the image in the first row
+    flex-direction: row;
+    width: 20%;
+
+  }
+  @include breakpoints.large {
+
+    display: grid;
+    grid-column: 1; // Position the image in the first row
+    flex-direction: column;
+    // justify-content: center;
+    padding: 0 20px 20px 0px;
+    width: 35%;
+  }
+
+
+}
+.imageContainer {
+  display: grid;
+  grid-column: 1; // Position the image in the first row
+  flex-direction: column;
+  padding: 0 20px 20px 0px;
+
+
+  @include breakpoints.small-only {
+    max-width: 100%;
+  }
+
+  @include breakpoints.medium {
+    display: grid;
+    grid-column: 1; // Position the image in the first row
+    flex-direction: row;
+  }
+
+}
+
+.images {
+  max-width: 100%;
+
+  .inProductLanding & {
+    margin-bottom: 10px;
+  }
+
+  .featured & {
+    @include breakpoints.small-only {
+          object-fit: cover;
+      max-width: 100%;
+    }
+
+    // @include breakpoints.medium {
+    //   height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-medium);
+    //   object-fit: cover;
+    //   width: 100%;
+    // }
+  }
+
+  .inCart & {
+    flex-shrink: 0;
+    width: functions.getColumns(6, variables.$bp-small);
+
+    @include breakpoints.medium {
+      margin-bottom: 15px;
+      width: 100%;
+    }
+  }
+}
+.sizeQuantity{
+  display: grid;
+  grid-column: 1; // Position the image in the first row
+  flex-direction: row;
+
+}
+.quantityBtn {
+  padding-left: 75px;
+  display: grid;
+  grid-column: 2;
+
+  width: 100%;
+  width: 40px; // Adjust size as needed
+  height: 40px; // Adjust size as needed
+  border-radius: 50%; // Makes the button circular
+
+  padding: 45px 0px 0px 150px; 
+
+
+  margin: 0 8px; // Adjust spacing between buttons as needed
+  font-size: 16px; // Adjust font size as needed
+  color: #000; // Adjust text color as needed
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.3s;
+
+}
+.sizeCol{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: functions.getColumns(1, variables.$bp-small);
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+
+
+  @include breakpoints.medium {
+    top: 45px;
+    right: functions.getColumns(1, variables.$bp-medium);
+    width: 20px;
+    height: 20px;
+  }
+
+  @include breakpoints.large {
+    right: functions.getColumns(1, variables.$bp-large);
+    width: 30px;
+
+
   }
 }
