@@ -16,6 +16,7 @@ export interface IProduct {
   inventory: number;
   images: IImage[];
   description?: string;
+  quantity?: number;
 }
 export interface ICart extends IProduct {
   count: number;
@@ -71,6 +72,7 @@ export default function useAppContextValue(): IAppContext {
         price: product.price,
         images: product.images,
         inventory: product.inventory,
+        quantity: 1,
       });
     }
 
