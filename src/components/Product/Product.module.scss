@@ -70,6 +70,14 @@
 .image {
   width: 100%;
   cursor: pointer;
+
+  @include breakpoints.small-only {
+    // Modern browsers see a more optimal crop on mobile
+    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
+    object-fit: cover;
+    width: 100%;
+
+  }
   
 
   .inProductLanding & {
@@ -94,6 +102,8 @@
     }
   }
 }
+
+
 
 .details {
   width: 100%;
@@ -250,43 +260,65 @@
   font-size: medium;
 }
 
-.imageContainer {
+.imageCol{
   display: grid;
   grid-column: 1; // Position the image in the first row
   flex-direction: column;
   // justify-content: center;
   padding: 0 20px 20px 0px;
-  max-width: 50%;
-  max-height: 50%;
+  width: 35%;
+
+  // max-height: 100%;
 
   @include breakpoints.small-only {
     // Modern browsers see a more optimal crop on mobile
     // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
     // object-fit: cover;
     max-width: 100%;
-    // width: 100%;
+    width: 50%;
     // display: block;
   }
 
   @include breakpoints.medium {
-    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-medium);
-    // width: 100%;
-    // object-fit: cover;
-    // padding: 0;
-    // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
-    // object-fit: cover;
-    // max-width: 100%;
-    // width: 100%;
+    display: grid;
+    grid-column: 1; // Position the image in the first row
+    flex-direction: row;
+    width: 20%;
 
+  }
+  @include breakpoints.large {
+
+    display: grid;
+    grid-column: 1; // Position the image in the first row
+    flex-direction: column;
+    // justify-content: center;
+    padding: 0 20px 20px 0px;
+    width: 35%;
+  }
+
+
+}
+.imageContainer {
+  display: grid;
+  grid-column: 1; // Position the image in the first row
+  flex-direction: column;
+  padding: 0 20px 20px 0px;
+
+
+  @include breakpoints.small-only {
+    max-width: 100%;
+  }
+
+  @include breakpoints.medium {
+    display: grid;
+    grid-column: 1; // Position the image in the first row
+    flex-direction: row;
   }
 
 }
 
 .images {
-  // padding-bottom: 500px;
-  // padding-top: 20px;
   max-width: 100%;
-  // max-height: auto;
 
   .inProductLanding & {
     margin-bottom: 10px;
@@ -294,9 +326,7 @@
 
   .featured & {
     @include breakpoints.small-only {
-    //   // Modern browsers see a more optimal crop on mobile
-      // height: functions.getColumns(calc(15 * 445 / 315), variables.$bp-small);
-      object-fit: cover;
+          object-fit: cover;
       max-width: 100%;
     }
 

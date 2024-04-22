@@ -26,6 +26,7 @@ interface IProductProps extends IProduct {
   description?: string;
 }
 
+
 const Product: React.FC<IProductProps> = ({
   className,
   count = 1,
@@ -39,12 +40,15 @@ const Product: React.FC<IProductProps> = ({
   title,
   description,
   
-  
 }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const changeImage = (image: string) => { 
+    return image;
+  }
 
   const isInCart = onIncrement && onDecrement;
   const productClasses = cx(className, styles.product, {
@@ -52,11 +56,19 @@ const Product: React.FC<IProductProps> = ({
     [styles.inCart]: isInCart,
     [styles.featured]: isFeatured,
     [styles.isAddable]: !isAdded,
+
   });
 
   const imageSrc = isFeatured
     ? getImage(images, imageTypes.DEFAULT_RT)
     : getImage(images);
+
+    const imageMainSrc = getImage(images, imageTypes.DEFAULT_RT);
+    const imageOneSrc = getImage(images, imageTypes.ALT_1_SQ);
+    const imageTwoSrc = getImage(images, imageTypes.ALT_2_SQ);
+    const imageThreeSrc = getImage(images, imageTypes.ALT_3_SQ);
+
+
   const finalPrice = (price * count).toFixed(2);
 
   return (
@@ -69,6 +81,24 @@ const Product: React.FC<IProductProps> = ({
                 <div className={styles.modal}>
                 <div className={styles.modelContent}>
           
+
+                  <div className={styles.imageCol}>
+
+                  <div className={styles.imageContainer}>
+                      <img className={styles.image} src={imageMainSrc} alt={title} />
+                    </div>
+                    <div className={styles.imageContainer}>
+                      <img className={styles.image} src={imageOneSrc} alt={title} />
+                    </div>
+                    <div className={styles.imageContainer}>
+                      <img className={styles.image} src={imageTwoSrc} alt={title} />
+                    </div>
+                    <div className={styles.imageContainer}>
+                      <img className={styles.image} src={imageThreeSrc} alt={title} />
+                    </div>
+                  </div>
+
+
                   <div className={styles.imageContainer}>
                     <img className={styles.images} src={imageSrc} alt={title} />
                   </div>
@@ -84,7 +114,6 @@ const Product: React.FC<IProductProps> = ({
                         <p className={styles.descriptionTitle}>Description</p> 
                         <p className={styles.descriptionText}>{description}</p>
                           
-
 
                           <div className={styles.sizeQuantity}>
                           <div className={styles.sizeCol}>
@@ -121,22 +150,7 @@ const Product: React.FC<IProductProps> = ({
                                   {isAdded ? 'Added' : 'Add to Bag'}
                                 </Button>
                               )
-                            )}
-        
-                        {/* <Quantity
-                          onIncrement={onIncrement}
-                          onDecrement={onDecrement}
-                          count={count}
-                        />
-
-                        <Button
-                          className={styles.addButton}
-                          disabled={isAdded}
-                          onClick={onClick}
-                        >
-                          {isAdded ? 'Added' : 'Add to Bag'}
-                        </Button> */}
-                        
+                            )}                     
                     </div>
                   </div>
                 </div>
