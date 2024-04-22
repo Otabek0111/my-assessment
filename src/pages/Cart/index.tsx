@@ -20,6 +20,18 @@ const Cart: React.FC<CartProps> = ({ closeCart }) => {
     [styles.empty]: !cartItems.length,
   });
 
+  const subtotal = cartItems.reduce((total, item) => {
+    if (item.quantity) {
+      return total + item.price * item.quantity;
+    }
+    return total;
+  }, 0);
+
+  const taxRate = 0.088;
+  const taxes = subtotal * taxRate;
+
+  const total = subtotal + taxes;
+
   return (
     <div className={styles.wrapper}>
       <div className={innerClasses}>
@@ -49,13 +61,13 @@ const Cart: React.FC<CartProps> = ({ closeCart }) => {
                 <div className={styles.summaryRow}>
                   <span className={styles.summaryItem}>Subtotal</span>
                   <span className={cx(styles.summaryItem, styles.summaryPrice)}>
-                    $0
+                    ${subtotal.toFixed(2)}
                   </span>
                 </div>
                 <div className={styles.summaryRow}>
                   <span className={styles.summaryItem}>Taxes</span>
                   <span className={cx(styles.summaryItem, styles.summaryPrice)}>
-                    $0
+                    ${taxes.toFixed(2)}
                   </span>
                 </div>
                 <div className={styles.summaryRow}>
@@ -73,7 +85,7 @@ const Cart: React.FC<CartProps> = ({ closeCart }) => {
                       styles.summaryItemBold,
                     )}
                   >
-                    $0
+                    ${total.toFixed(2)}
                   </span>
                 </div>
               </div>
